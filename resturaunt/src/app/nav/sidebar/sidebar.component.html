@@ -1,0 +1,35 @@
+<!-- sidebar.component.html -->
+<div class="sidenav bg-dark" id="sidenav">
+  
+  <a href="#" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+  <a href="/viewfood" class="nav-link"><i class="fas fa-box"></i> Foods </a>
+  <a href="/viewallfood" class="nav-link"><i class="fas fa-box"></i> Foods2 </a>
+  <a href="/viewtable" class="nav-link"><i class="fas fa-table"></i> Tabble </a>
+  <div class="dropdown">
+    <a href="#" class="nav-link dropdown-toggle" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-clipboard-check"></i> Booking & Order
+    </a>
+    <div class="dropdown-menu bg-dark" aria-labelledby="usersDropdown">
+      <a class="dropdown-item" href="/savefood">Add Food</a>
+      <a class="dropdown-item" href="/savetable">Add Table</a>
+      <a class="dropdown-item" href="/viewtable">View Table</a>
+      <a class="dropdown-item" href="/tableapprove">Approve Table</a>
+      <a class="dropdown-item" href="/orderapprove">Approve Order</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#" class="nav-link dropdown-toggle" id="usersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-hamburger"></i> Booking & Order2
+    </a>
+    <div class="dropdown-menu bg-dark" aria-labelledby="usersDropdown">
+      <a class="dropdown-item" href="#">User List</a>
+      <a class="dropdown-item" href="/tablebooking">Book Table</a>
+      <a class="dropdown-item" href="/orderfood">Order Food</a>
+      <a class="dropdown-item" href="/orderlist">Orders</a>
+    </div>
+  </div>
+  <a href="#" class="nav-link"><i class="fas fa-users"></i> Users</a>
+  <a href="#" class="nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+  <a href="#" class="nav-link"><i class="fas fa-envelope"></i> Messages</a>
+  <a href="#" (click)="logout()"  class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>

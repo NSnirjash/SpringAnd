@@ -1,0 +1,20 @@
+/* styles.css or component-specific CSS */
+:host {
+    display: block;
+    height: 100vh;
+}
+
+body {
+    background: url('../../../assets/background/images.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; /* Full height for the background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}

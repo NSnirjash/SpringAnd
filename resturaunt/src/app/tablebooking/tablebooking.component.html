@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Table Booking</h2>
+
+  <!-- Available Tables Section -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5>Available Tables</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let table of availableTables">
+          <div class="table-card">
+            <h6>Table ID: {{ table.id }}</h6>
+            <p>Capacity: {{ table.capacity }}</p>
+            <p>Status: {{ table.status }}</p>
+            <button class="btn btn-primary" (click)="createBooking(table)">
+              <i class="fa fa-book"></i> Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Bookings Section -->
+  <div class="card">
+    <div class="card-header">
+      <h5>Your Bookings</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Table Number</th>
+            <th>Booking Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of userBookings">
+            <td>{{ booking.tables.tableNumber }}</td>
+            <td>{{ booking.bookingDate | date: 'short' }}</td>
+            <td>{{ booking.status }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="cancelBooking(booking.id)">
+                <i class="fa fa-times"></i> Cancel
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

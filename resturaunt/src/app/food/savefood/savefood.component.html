@@ -1,0 +1,41 @@
+<div class="container mb-5 py-1">
+  <div class="container mt-5 py-5 mb-5">
+    <h2>Add New Food Item</h2>
+    <form (ngSubmit)="saveFood()" #foodForm="ngForm">
+  
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="food.name" name="name" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" class="form-control" [(ngModel)]="food.price" name="price" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" id="category" class="form-control" [(ngModel)]="food.category" name="category" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="available">Available</label>
+        <select id="available" class="form-control" [(ngModel)]="food.available" name="available" required>
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" class="form-control-file" (change)="onImageSelected($event)" accept="image/*" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!foodForm.form.valid">Save Food</button>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  
+</div>

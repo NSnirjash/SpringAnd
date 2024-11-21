@@ -1,0 +1,99 @@
+<!-- <div *ngIf="orders.length > 0" class="order-list mt-5">
+  <h3>Your Orders</h3>
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Staff</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.food.name }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.totalPrice | currency }}</td>
+        <td>
+          <select name="waiter" [(ngModel)]="order.staff.id">
+            <option *ngFor="let waiter of waiters" value="waiter.id">{{waiter.name}}</option>
+          </select>
+        </td>
+        <td>{{ order.status }}</td>
+        <td>
+          <button class="btn btn-success" (click)="approveOrder(order)">Approve</button>
+          <button class="btn btn-danger" (click)="rejectOrder(order)">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<div class="container">
+  <h2>Manage Orders</h2>
+
+  <div class="filter">
+      <label for="filterStatus">Filter by Status:</label>
+      <select id="filterStatus" [(ngModel)]="filterStatus" (change)="loadAllOrderDetails()">
+          <option value="all">All Orders</option>
+          <option value="pending">Pending Orders</option>
+          <option value="approved">Approved Orders</option>
+      </select>
+  </div>
+
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th>Order ID</th>
+              <th>User</th>
+              <th>Food Item</th>
+              <th>Quantity</th>
+              <th>Status</th>
+              <th>Total Price</th>
+              <th>Waiter</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let order of orders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.user.name }}</td>
+              <!-- <td>{{ order.food.name }}</td>
+              <td>{{ order.quantity }}</td> -->
+              <td>{{ order.status }}</td>
+              <td>{{ order.totalPrice | currency }}</td>
+              <!-- <td>
+                
+                  <select *ngIf="order.status === 'PENDING'" [(ngModel)]="order.staff" [ngModelOptions]="{standalone: true}">
+                      <option *ngFor="let waiter of waiters" [ngValue]="waiter">{{ waiter.name }}</option>
+                  </select>
+              </td> -->
+              <td>
+                <!-- If the order is pending and no waiter is assigned, show the dropdown -->
+                <ng-container *ngIf="order.status === 'PENDING'">
+                  <select *ngIf="order.status === 'PENDING'" [(ngModel)]="order.staff" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let waiter of waiters" [ngValue]="waiter">{{ waiter.name }}</option>
+                </select>
+                </ng-container>
+              
+                <!-- If the order is not pending or a waiter is already assigned, show the waiter's name -->
+                <ng-container *ngIf="order.status != 'PENDING' || (order.staff && order.staff.name)">
+                  <span *ngIf="order.staff">{{ order.staff.name }}</span>
+                </ng-container>
+
+              </td>
+              <td>
+                  <button *ngIf="order.status === 'PENDING'" (click)="approveOrder(order)" class="btn btn-success">Approve</button>
+                  <button *ngIf="order.status === 'PENDING'" (click)="rejectOrder(order)" class="btn btn-danger">Reject</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
