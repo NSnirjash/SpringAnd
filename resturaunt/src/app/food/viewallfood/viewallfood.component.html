@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h2 class="text-center">View Food Items</h2>
+  
+    <div class="filter-container">
+      <!-- Category Dropdown -->
+      <div class="form-group filter-item">
+        <label for="category">Filter by Category</label>
+        <select id="category" class="form-control" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+          <option value="">All Categories</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+  
+      <!-- Search Bar -->
+      <div class="form-group filter-item">
+        <input type="text" class="form-control" placeholder="Search food by name" [(ngModel)]="searchText"
+          (input)="searchFood()">
+      </div>
+    </div>
+  
+  
+    <!-- Food List -->
+    <div class="row mt-4">
+      <div *ngFor="let food of filteredFoods" class="col-md-4 mb-4">
+        <div class="card">
+          <img [src]="'http://localhost:8090/images/' + food.image" class="card-img-top my-1" alt="{{ food.name }}">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ food.name }}</h5>
+            <p class="card-text">
+              Price: {{ food.price }} <br>
+              Category: {{ food.category }} <br>
+              Available: {{ food.available ? 'Yes' : 'No' }}
+            </p>                 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
